@@ -1,11 +1,11 @@
 import csv
 from flask import Flask, render_template, request, redirect
-app = Flask(__name__)
+app = Flask(__name__, template_folder='Templates')
 
 
 @app.route('/')
 def hello_world():
-    return render_template('index.html')
+    return render_template('./index.html')
 
 
 @app.route('/test')
@@ -27,7 +27,7 @@ def submit_form():
 
 
 def write_to_csv(data):
-    with open('database.csv', newline='', mode='a') as database:
+    with open('/home/kpbianco/online-portfolio/database.csv', newline='', mode='a') as database:
         name = data["name"]
         email = data["email"]
         message = data["message"]
